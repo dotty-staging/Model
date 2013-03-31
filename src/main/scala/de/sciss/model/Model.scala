@@ -26,7 +26,7 @@
 package de.sciss.model
 
 object Model {
-  type Listener[U] = PartialFunction[U, Unit]
+  type Listener[-U] = PartialFunction[U, Unit]
 }
 trait Model[U] {
   /**

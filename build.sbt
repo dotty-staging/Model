@@ -1,6 +1,6 @@
 name := "Model"
 
-version := "0.1.0"
+version := "0.2.0"
 
 organization := "de.sciss"
 
@@ -17,6 +17,10 @@ initialCommands in console := """import de.sciss.model._"""
 // libraryDependencies in ThisBuild ++= Seq(
 //  "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 // )
+
+retrieveManaged := true
+
+scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
 // ---- publishing ----
 

@@ -28,11 +28,22 @@ package impl
 
 import scala.util.control.NonFatal
 
+/** A straight forward implementation of a model. The trait implements all required methods and
+  * provides a `dispatch` method to fire any updates.
+  */
 trait ModelImpl[U] extends Model[U] {
   private type Listener = Model.Listener[U]
   private val sync      = new AnyRef
   private var listeners = Vector.empty[Listener]
 
+  /** Removes all listeners. This is useful when disposing the model, to remove any unnecessary references. */
+  protected def releaseListeners() {
+    sync.synchronized(listeners = Vector.empty)
+  }
+
+  /** Synchronously dispatches an update to all currently registered listeners. Non fatal exceptions are
+    * caught on a per-listener basis without stopping the dispatch.
+    */
   final protected def dispatch(update: U) {
     sync.synchronized {
       listeners.foreach { pf =>

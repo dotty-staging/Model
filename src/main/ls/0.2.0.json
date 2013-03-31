@@ -1,7 +1,7 @@
 {
   "organization" : "de.sciss",
   "name" : "Model",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "description" : "A simple typed publisher-observer mechanism",
   "site" : "https://github.com/Sciss/Model",
   "tags" : [ "model", "observer", "publisher" ],
