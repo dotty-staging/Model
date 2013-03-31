@@ -1,0 +1,17 @@
+{
+  "organization" : "de.sciss",
+  "name" : "Model",
+  "version" : "0.1.0",
+  "description" : "A simple typed publisher-observer mechanism",
+  "site" : "https://github.com/Sciss/Model",
+  "tags" : [ "model", "observer", "publisher" ],
+  "docs" : "",
+  "resolvers" : [ "https://oss.sonatype.org/content/repositories/releases" ],
+  "dependencies" : [ ],
+  "scalas" : [ "2.10.1" ],
+  "licenses" : [ {
+    "name" : "LGPL v2.1+",
+    "url" : "http://www.gnu.org/licenses/lgpl-2.1.txt"
+  } ],
+  "sbt" : false
+}
