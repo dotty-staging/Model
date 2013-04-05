@@ -27,8 +27,10 @@ package de.sciss.model
 
 object Model {
   type Listener[-U] = PartialFunction[U, Unit]
+
+  def EmptyListener[U]: Listener[U] = PartialFunction.empty
 }
-trait Model[U] {
+trait Model[+U] {
   /**
    * Registers a listener for updates from the model.
    * A listener is simply a partial function which receives instances of `U`. Therefore
@@ -50,9 +52,9 @@ trait Model[U] {
    *   m.removeListener(l)
    * }}}
    */
-  def addListener(pf: Model.Listener[U]): Model.Listener[U]
+  def addListener[U1 >: U](pf: Model.Listener[U1]): Model.Listener[U1]
   /**
    * Unregisters a listener for updates from the model.
    */
-  def removeListener(pf: Model.Listener[U]): Unit
+  def removeListener[U1 >: U](pf: Model.Listener[U1]): Unit
 }

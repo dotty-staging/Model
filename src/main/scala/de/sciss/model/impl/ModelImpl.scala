@@ -56,12 +56,12 @@ trait ModelImpl[U] extends Model[U] {
     }
   }
 
-  final def addListener(pf: Listener) = sync.synchronized {
+  final def addListener[U1 >: U](pf: Model.Listener[U1]) = sync.synchronized {
     listeners :+= pf
     pf
   }
 
-  final def removeListener(pf: Listener) { sync.synchronized {
+  final def removeListener[U1 >: U](pf: Model.Listener[U1]) { sync.synchronized {
     val idx = listeners.indexOf(pf)
     if (idx >=0 ) listeners = listeners.patch(idx, Nil, 1)
   }}
