@@ -56,13 +56,23 @@ trait ModelImpl[U] extends Model[U] {
     }
   }
 
-  final def addListener(pf: Model.Listener[U]): pf.type = sync.synchronized {
+  /** Subclasses can override this to issue particular actions when the first listener has been registered */
+  protected def startListening() {}
+  /** Subclasses can override this to issue particular actions when the last listener has been unregistered */
+  protected def stopListening () {}
+
+  def addListener(pf: Model.Listener[U]): pf.type = sync.synchronized {
+    val start = listeners.isEmpty
     listeners :+= pf
+    if (start) startListening()
     pf
   }
 
-  final def removeListener(pf: Model.Listener[U]) { sync.synchronized {
+  def removeListener(pf: Model.Listener[U]) { sync.synchronized {
     val idx = listeners.indexOf(pf)
-    if (idx >=0 ) listeners = listeners.patch(idx, Nil, 1)
+    if (idx >=0 ) {
+      listeners = listeners.patch(idx, Nil, 1)
+      if (listeners.isEmpty) stopListening()
+    }
   }}
 }
