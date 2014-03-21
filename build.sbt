@@ -1,10 +1,10 @@
 name := "Model"
 
-version := "0.3.1"
+version := "0.3.2-SNAPSHOT"
 
 organization := "de.sciss"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.11.0-RC3"
 
 description := "A simple typed publisher-observer mechanism"
 
@@ -14,11 +14,11 @@ licenses := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
 
 initialCommands in console := """import de.sciss.model._"""
 
-// libraryDependencies in ThisBuild ++= Seq(
-//  "org.scalatest" %% "scalatest" % "1.9.1" % "test"
-// )
+libraryDependencies in ThisBuild ++= Seq(
+  "org.scalatest" %% "scalatest" % "2.1.2" % "test"
+)
 
-retrieveManaged := true
+// retrieveManaged := true
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
