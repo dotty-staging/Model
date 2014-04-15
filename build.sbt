@@ -1,16 +1,18 @@
-name         := "Model"
+name               := "Model"
 
-version      := "0.3.2"
+version            := "0.3.2"
 
-organization := "de.sciss"
+organization       := "de.sciss"
 
-scalaVersion := "2.11.0-RC4"
+scalaVersion       := "2.11.0-RC4"
 
-description  := "A simple typed publisher-observer mechanism"
+crossScalaVersions := Seq("2.11.0-RC4", "2.10.4")
 
-homepage     := Some(url("https://github.com/Sciss/" + name.value))
+description        := "A simple typed publisher-observer mechanism"
 
-licenses     := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
+homepage           := Some(url("https://github.com/Sciss/" + name.value))
+
+licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
 
 initialCommands in console := """import de.sciss.model._"""
 

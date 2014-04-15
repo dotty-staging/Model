@@ -1,5 +1,5 @@
 /*
- *  EmptyImpl.scala
+ *  DummyImpl.scala
  *  (Model)
  *
  *  Copyright (c) 2013-2014 Hanns Holger Rutz. All rights reserved.
@@ -16,10 +16,10 @@ package impl
 
 import de.sciss.model.Model.Listener
 
-object EmptyImpl {
-  def testVariance: Model[String] = EmptyImpl
-}
-trait EmptyImpl extends Model[Nothing] {
+//object DummyImpl {
+//  def testVariance: Model[String] = new DummyImpl {}
+//}
+trait DummyImpl extends Model[Nothing] {
   def removeListener(pf: Listener[Nothing]): Unit = ()
   def addListener   (pf: Listener[Nothing]): pf.type = pf
 }
