@@ -4,7 +4,7 @@ version            := "0.3.2"
 
 organization       := "de.sciss"
 
-scalaVersion       := "2.11.0-RC4"
+scalaVersion       := "2.10.4"
 
 crossScalaVersions := Seq("2.11.0-RC4", "2.10.4")
 
@@ -20,7 +20,7 @@ libraryDependencies in ThisBuild ++= Seq(
   "org.scalatest" %% "scalatest" % "2.1.3" % "test"
 )
 
-retrieveManaged := true
+// retrieveManaged := true
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture")
 
