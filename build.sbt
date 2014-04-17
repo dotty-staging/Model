@@ -4,9 +4,9 @@ version            := "0.3.2"
 
 organization       := "de.sciss"
 
-scalaVersion       := "2.10.4"
+scalaVersion       := "2.11.0"
 
-crossScalaVersions := Seq("2.11.0-RC4", "2.10.4")
+crossScalaVersions := Seq("2.11.0", "2.10.4")
 
 description        := "A simple typed publisher-observer mechanism"
 
@@ -16,9 +16,8 @@ licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-
 
 initialCommands in console := """import de.sciss.model._"""
 
-libraryDependencies in ThisBuild ++= Seq(
+libraryDependencies +=
   "org.scalatest" %% "scalatest" % "2.1.3" % "test"
-)
 
 // retrieveManaged := true
 
