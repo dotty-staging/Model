@@ -1,5 +1,9 @@
 # Model
 
+[![Flattr this](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=sciss&url=https%3A%2F%2Fgithub.com%2FSciss%2FModel&title=Model%20Library&language=Scala&tags=github&category=software)
+[![Build Status](https://travis-ci.org/Sciss/Model.svg?branch=master)](https://travis-ci.org/Sciss/Model)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.sciss/model_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.sciss/model_2.11)
+
 ## statement
 
 Model is a simple building block for the Scala programming language, providing a typed publisher-observer mechanism. It is (C)opyright 2013&ndash;2014 by Hanns Holger Rutz. All rights reserved. This project is released under the [GNU Lesser General Public License](https://raw.github.com/Sciss/Model/master/LICENSE) and comes with absolutely no warranties. To contact the author, send an email to `contact at sciss.de`
