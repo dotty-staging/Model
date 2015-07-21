@@ -1,12 +1,12 @@
 name               := "Model"
 
-version            := "0.3.2"
+version            := "0.3.3-SNAPSHOT"
 
 organization       := "de.sciss"
 
-scalaVersion       := "2.11.0"
+scalaVersion       := "2.11.7"
 
-crossScalaVersions := Seq("2.11.0", "2.10.4")
+crossScalaVersions := Seq("2.11.7", "2.10.5")
 
 description        := "A simple typed publisher-observer mechanism"
 
@@ -17,7 +17,7 @@ licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-
 initialCommands in console := """import de.sciss.model._"""
 
 libraryDependencies +=
-  "org.scalatest" %% "scalatest" % "2.1.3" % "test"
+  "org.scalatest" %% "scalatest" % "2.2.5" % "test"
 
 // retrieveManaged := true
 
@@ -28,7 +28,7 @@ scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture")
 publishMavenStyle := true
 
 publishTo :=
-  Some(if (version.value endsWith "-SNAPSHOT")
+  Some(if (isSnapshot.value)
     "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
   else
     "Sonatype Releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
@@ -54,11 +54,8 @@ pomExtra := { val n = name.value
 
 // ---- ls.implicit.ly ----
 
-seq(lsSettings :_*)
-
-(LsKeys.tags   in LsKeys.lsync) := Seq("model", "observer", "publisher")
-
-(LsKeys.ghUser in LsKeys.lsync) := Some("Sciss")
-
-(LsKeys.ghRepo in LsKeys.lsync) := Some(name.value)
+// seq(lsSettings :_*)
+// (LsKeys.tags   in LsKeys.lsync) := Seq("model", "observer", "publisher")
+// (LsKeys.ghUser in LsKeys.lsync) := Some("Sciss")
+// (LsKeys.ghRepo in LsKeys.lsync) := Some(name.value)
 
