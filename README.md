@@ -6,7 +6,7 @@
 
 ## statement
 
-Model is a simple building block for the Scala programming language, providing a typed publisher-observer mechanism. It is (C)opyright 2013&ndash;2014 by Hanns Holger Rutz. All rights reserved. This project is released under the [GNU Lesser General Public License](https://raw.github.com/Sciss/Model/master/LICENSE) and comes with absolutely no warranties. To contact the author, send an email to `contact at sciss.de`
+Model is a simple building block for the Scala programming language, providing a typed publisher-observer mechanism. It is (C)opyright 2013&ndash;2017 by Hanns Holger Rutz. All rights reserved. This project is released under the [GNU Lesser General Public License](https://raw.github.com/Sciss/Model/master/LICENSE) and comes with absolutely no warranties. To contact the author, send an email to `contact at sciss.de`
 
 ## linking
 
@@ -14,11 +14,11 @@ To link to this library:
 
     libraryDependencies += "de.sciss" %% "model" % v
 
-The current version `v` is `"0.3.2+"`
+The current version `v` is `"0.3.3"`
 
 ## building
 
-This project currently builds against Scala 2.10, using sbt 0.13.
+This project currently builds against Scala 2.12, 2.11, 2.10, using sbt 0.13.
 
 ## example
 
