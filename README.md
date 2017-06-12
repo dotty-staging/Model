@@ -14,7 +14,7 @@ To link to this library:
 
     libraryDependencies += "de.sciss" %% "model" % v
 
-The current version `v` is `"0.3.3"`
+The current version `v` is `"0.3.4"`
 
 ## building
 
@@ -73,3 +73,11 @@ Typically you declare the update type in the model's companion object as a seale
     set.removeListener(obs)
     assert(set.remove(2)) // unobserved
 ```
+
+## changes
+
+- 0.3.4 relaxes the synchronization in `ModelImpl`, making it impossible to create dead-locks by
+  registering or un-registering listeners during dispatch. Note that `startListening` and `stopListening`
+  is still called under synchronization, therefore it must be avoided that sub-classes of `ModelImpl`
+  call into anything locking within these two methods. The synchronization was preserved here to
+  guarantee a strict sequential operation of `startListening` and `stopListening`.

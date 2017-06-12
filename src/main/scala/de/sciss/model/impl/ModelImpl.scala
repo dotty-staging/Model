@@ -2,7 +2,7 @@
  *  ModelImpl.scala
  *  (Model)
  *
- *  Copyright (c) 2013-2014 Hanns Holger Rutz. All rights reserved.
+ *  Copyright (c) 2013-2017 Hanns Holger Rutz. All rights reserved.
  *
  *  This software is published under the GNU Lesser General Public License v2.1+
  *
@@ -21,21 +21,26 @@ import scala.util.control.NonFatal
   */
 trait ModelImpl[U] extends Model[U] {
   private type Listener = Model.Listener[U]
-  private val sync      = new AnyRef
-  private var listeners = Vector.empty[Listener]
+  private[this] val sync = new AnyRef
+
+  @volatile
+  private[this] var listeners = Vector.empty[Listener]
 
   /** Removes all listeners. This is useful when disposing the model, to remove any unnecessary references. */
-  protected def releaseListeners(): Unit = sync.synchronized{
+  protected def releaseListeners(): Unit = sync.synchronized {
     listeners = Vector.empty
   }
 
   /** Synchronously dispatches an update to all currently registered listeners. Non fatal exceptions are
     * caught on a per-listener basis without stopping the dispatch.
     */
-  final protected def dispatch(update: U): Unit = sync.synchronized {
-    listeners.foreach { pf =>
-      if (pf.isDefinedAt(update)) try {
-        pf(update)
+  final protected def dispatch(update: U): Unit = {
+    val ls = listeners // sync.synchronized(listeners)
+    ls.foreach { pf =>
+      try {
+        if (pf.isDefinedAt(update)) {
+          pf(update)
+        }
       } catch {
         case NonFatal(e) => e.printStackTrace()
       }
@@ -55,10 +60,13 @@ trait ModelImpl[U] extends Model[U] {
   }
 
   def removeListener(pf: Model.Listener[U]): Unit = sync.synchronized {
-    val idx = listeners.indexOf(pf)
-    if (idx >=0 ) {
-      listeners = listeners.patch(idx, Nil, 1)
-      if (listeners.isEmpty) stopListening()
+    sync.synchronized {
+      val idx = listeners.indexOf(pf)
+      val stop = (idx >=0) && {
+        listeners = listeners.patch(idx, Nil, 1)
+        listeners.isEmpty
+      }
+      if (stop) stopListening()
     }
   }
 }

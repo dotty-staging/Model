@@ -2,7 +2,7 @@
  *  Model.scala
  *  (Model)
  *
- *  Copyright (c) 2013-2014 Hanns Holger Rutz. All rights reserved.
+ *  Copyright (c) 2013-2017 Hanns Holger Rutz. All rights reserved.
  *
  *  This software is published under the GNU Lesser General Public License v2.1+
  *
@@ -41,6 +41,6 @@ trait Model[+U] {
     */
   def addListener(pf: Model.Listener[U]): pf.type
 
-  /** Unregisters a listener for updates from the model. */
+  /** Un-registers a listener for updates from the model. */
   def removeListener(pf: Model.Listener[U]): Unit
 }
