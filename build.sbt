@@ -17,8 +17,10 @@ mimaPreviousArtifacts := Set("de.sciss" %% baseNameL % mimaVersion)
 
 initialCommands in console := """import de.sciss.model._"""
 
-libraryDependencies +=
-  "org.scalatest" %% "scalatest" % "3.0.3" % "test"
+libraryDependencies += {
+  val v = if (scalaVersion.value == "2.13.0-M5") "3.0.6-SNAP5" else "3.0.3"
+  "org.scalatest" %% "scalatest" % v % Test
+}
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture", "-encoding", "utf8", "-Xlint")
 
