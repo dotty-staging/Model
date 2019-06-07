@@ -8,7 +8,7 @@ name               := baseName
 version            := projectVersion
 organization       := "de.sciss"
 scalaVersion       := "2.12.2"
-crossScalaVersions := Seq("2.12.2", "2.11.11", "2.13.0-RC3")
+crossScalaVersions := Seq("2.12.2", "2.11.11", "2.13.0")
 description        := "A simple typed publisher-observer mechanism"
 homepage           := Some(url(s"https://github.com/Sciss/${name.value}"))
 licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
@@ -19,14 +19,14 @@ initialCommands in console := """import de.sciss.model._"""
 
 libraryDependencies += {
   val v = "3.0.8-RC5"
-  // if (scalaVersion.value == "2.13.0-RC2") {
-  //   "org.scalatest" % "scalatest_2.13.0-RC1" % v % Test
-  // } else {
+  if (scalaVersion.value == "2.13.0") {
+    "org.scalatest" % "scalatest_2.13.0-RC3" % v % Test
+  } else {
     "org.scalatest" %% "scalatest" % v % Test
-  // }
+  }
 }
 
-scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture", "-encoding", "utf8", "-Xlint")
+scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-encoding", "utf8", "-Xlint", "-Xsource:2.13")
 
 // ---- publishing ----
 
