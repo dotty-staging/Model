@@ -13,6 +13,10 @@
 
 package de.sciss.model
 
+//trait Emitted {
+//  def isSignificant: Boolean
+//}
+
 /**
  * Value based events fire instances of `Change` which provides the value before
  * and after modification.
@@ -20,7 +24,9 @@ package de.sciss.model
  * @param before  the value before the modification
  * @param now     the value after the modification
  */
-final case class Change[@specialized +A](before: A, now: A) {
+final case class Change[@specialized +A](before: A, now: A) /*extends Emitted*/ {
+//  private[this] lazy val diff = before != now
+
   /**
    * A change is significant if `before != now`
    */
