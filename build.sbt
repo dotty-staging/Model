@@ -1,14 +1,14 @@
 lazy val baseName  = "Model"
 lazy val baseNameL = baseName.toLowerCase
 
-lazy val projectVersion = "0.3.5-SNAPSHOT"
+lazy val projectVersion = "0.3.5"
 lazy val mimaVersion    = "0.3.3"
 
 lazy val commonSettings = Seq(
   name               := baseName,
   version            := projectVersion,
   organization       := "de.sciss",
-  scalaVersion       := "2.12.12",
+  scalaVersion       := "2.13.3",
   crossScalaVersions := Seq("0.27.0-RC1", "2.13.3", "2.12.12"),
   description        := "A simple typed publisher-observer mechanism",
   homepage           := Some(url(s"https://github.com/Sciss/${name.value}")),
