@@ -4,26 +4,36 @@ lazy val baseNameL = baseName.toLowerCase
 lazy val projectVersion = "0.3.5"
 lazy val mimaVersion    = "0.3.3"
 
+lazy val deps = new {
+  val test = new {
+    val scalaTest = "3.2.2"
+  }
+}
+
+lazy val commonJvmSettings = Seq(
+  crossScalaVersions := Seq("0.27.0-RC1", "2.13.3", "2.12.12"),
+)
+
 lazy val commonSettings = Seq(
   name               := baseName,
   version            := projectVersion,
   organization       := "de.sciss",
   scalaVersion       := "2.13.3",
-  crossScalaVersions := Seq("0.27.0-RC1", "2.13.3", "2.12.12"),
   description        := "A simple typed publisher-observer mechanism",
   homepage           := Some(url(s"https://github.com/Sciss/${name.value}")),
   licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt")),
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-encoding", "utf8", "-Xlint", "-Xsource:2.13"),
 )
 
-lazy val root = project.in(file("."))
+lazy val root = crossProject(JSPlatform, JVMPlatform).in(file("."))
   .settings(commonSettings)
+  .jvmSettings(commonJvmSettings)
   .settings(publishSettings)
   .settings(
     mimaPreviousArtifacts := Set("de.sciss" %% baseNameL % mimaVersion),
     initialCommands in console := """import de.sciss.model._""",
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.2.2" % Test
+      "org.scalatest" %%% "scalatest" % deps.test.scalaTest % Test
     )
   )
 
