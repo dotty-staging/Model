@@ -5,7 +5,10 @@
 
 ## statement
 
-Model is a simple building block for the Scala programming language, providing a typed publisher-observer mechanism. It is (C)opyright 2013&ndash;2020 by Hanns Holger Rutz. All rights reserved. This project is released under the [GNU Lesser General Public License](https://raw.github.com/Sciss/Model/main/LICENSE) and comes with absolutely no warranties. To contact the author, send an email to `contact at sciss.de`
+Model is a simple building block for the Scala programming language, providing a typed publisher-observer mechanism. 
+It is (C)opyright 2013&ndash;2020 by Hanns Holger Rutz. All rights reserved. This project is released under the
+[GNU Lesser General Public License](https://raw.github.com/Sciss/Model/main/LICENSE) and comes with absolutely no 
+warranties. To contact the author, send an e-mail to `contact at sciss.de`.
 
 ## linking
 
@@ -17,13 +20,21 @@ The current version `v` is `"0.3.5"`
 
 ## building
 
-This project builds against Scala 2.13, 2.12, using sbt. The last version to support Scala 2.11 was v0.3.4.
+This project with sbt against Scala 2.13, 2.12, Dotty (JVM) and Scala 2.13 (JS).
+The last version to support Scala 2.11 was v0.3.4.
 
 ## example
 
-You would declare the mixin of `Model[U]` where `U` is the type of update sent by the model. The actual implementation would then most likely use the implementation `impl.ModelImpl`. Observers register with the model using `addListener` which takes a partial function. In that respect a model is similar to Scala-Swing's `Reactor`, however being specific in the argument type `U`. The `addListener` method returns the partial function for future reference, useful in unregistering the observer via `removeListener` (be careful not to use Scala's method-to-function conversion for listeners, as repeated calls will produce non-identical partial function instances, so `removeListener` would fail).
+You would declare the mixin of `Model[U]` where `U` is the type of update sent by the model. The actual 
+implementation would then most likely use the implementation `impl.ModelImpl`. Observers register with the model 
+using `addListener` which takes a partial function. In that respect a model is similar to Scala-Swing's `Reactor`, 
+however being specific in the argument type `U`. The `addListener` method returns the partial function for future 
+reference, useful in unregistering the observer via `removeListener` (be careful not to use Scala's 
+method-to-function conversion for listeners, as repeated calls will produce non-identical partial function 
+instances, so `removeListener` would fail).
 
-Typically you declare the update type in the model's companion object as a sealed trait. Here is an example of an observed set (included in the test sources):
+Typically you declare the update type in the model's companion object as a sealed trait. Here is an example of an 
+observed set (included in the test sources):
 
 ```scala
 
